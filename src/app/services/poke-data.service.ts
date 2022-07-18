@@ -16,4 +16,7 @@ export class PokeDataService {
   getPokemonByID(id: number): Observable<Pokemon>{
     return this.http.get<Pokemon>(`${this.baseUrl}pokemon/${id}`)
   }
+  getAllPokemon(): Observable<Pokemon[]>{
+    return this.http.get<Pokemon[]>(`${this.baseUrl}pokemon?limit=10`)
+  }
 }
