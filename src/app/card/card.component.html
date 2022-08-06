@@ -1,7 +1,12 @@
 <div class="card-component">
-  <p>N°{{pokemonDetail?.id}}</p>
-  <p class="card-name">name: {{pokemonDetail?.name}}</p>
-  <img src={{pokemonDetail?.sprites?.front_default}} alt="">
-  <p>height: {{pokemonDetail?.height}}</p>
-  <p>weight: {{pokemonDetail?.weight}}</p>
+  <div class="card-contents">
+    <p>N°{{ pokemonDetail?.id }}</p>
+    <h3 class="pokemon-name">{{ pokemonDetail?.name | uppercase }}</h3>
+    <img class="pokemon-sprite" src="{{ pokemonDetail?.sprites?.front_default }}" alt="" />
+    <div class="types-container">
+      <span class="type" *ngFor="let type of pokemonDetail?.types">
+        {{ type.type.name }}
+      </span>
+    </div>
+  </div>
 </div>

@@ -10,6 +10,12 @@ export interface Pokemon {
     back_female: string;
     back_shiny_female: string;
   };
+  types: [{
+    slot: number;
+    type: {
+      name: string;
+    }
+  }]
   height: number;
   weight: number;
 }
