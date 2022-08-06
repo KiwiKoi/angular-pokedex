@@ -1,11 +1,18 @@
 .card-list-component {
   display: flex;
   flex-direction: column;
+  background-color: skyblue;
+
+  .list-title{
+    color: white;
+    text-align: center;
+  }
 
 .card-list{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 
   .card-container {
     margin: 1rem;
