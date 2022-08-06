@@ -8,11 +8,12 @@ import {PokeDataService} from '../services/poke-data.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-@Input() pokemon!: Pokemon;
+@Input() pokemon!: any;
 
   constructor(){}
 
   ngOnInit(): void {
+    console.log(this.pokemon)
   }
 
 }

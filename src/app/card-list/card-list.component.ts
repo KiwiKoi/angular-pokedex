@@ -9,18 +9,17 @@ import {PokeDataService} from '../services/poke-data.service';
 })
 export class CardListComponent implements OnInit {
 
-  currentPokemon!: Pokemon;
+  pokemon!: Pokemon;
   pokemonList!: Pokemon[];
 
   constructor(private pokeDataService: PokeDataService){}
 
   ngOnInit(): void {
   this.fetchAllPokemon();
-  console.log(this.pokemonList);
   }
 
   fetchAllPokemon(){
-    this.pokeDataService.getAllPokemon().subscribe((response: any) => {
+    this.pokeDataService.getAllPokemon().subscribe((response: Pokemon[]) => {
        this.pokemonList = response;
     }
     )
