@@ -19,7 +19,7 @@ export class CardListComponent implements OnInit {
   }
 
   fetchAllPokemon(){
-    this.pokeDataService.getAllPokemon().subscribe((response: Pokemon[]) => {
+    this.pokeDataService.getPokemonList().subscribe((response: Pokemon[]) => {
        this.pokemonList = response;
     }
     )

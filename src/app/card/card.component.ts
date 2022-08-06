@@ -10,10 +10,18 @@ import {PokeDataService} from '../services/poke-data.service';
 export class CardComponent implements OnInit {
 @Input() pokemon!: any;
 
-  constructor(){}
+pokemonDetail!: Pokemon;
+
+  constructor(private pokeDataService: PokeDataService){}
 
   ngOnInit(): void {
-    console.log(this.pokemon)
+    this.fetchPokemon();
   }
+
+fetchPokemon(){
+  this.pokeDataService.getPokemonDetail(this.pokemon.name).subscribe((response: Pokemon) => {
+    this.pokemonDetail = response;
+  })
+}
 
 }
