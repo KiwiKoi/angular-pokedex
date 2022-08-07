@@ -7,7 +7,10 @@
   border-radius: 0.8rem;
   border-style: none;
   box-shadow: 0rem 0rem 0.4rem 0.16rem #808080;
-  width: 14rem;
+  width: 12rem;
+  &:hover{
+    box-shadow: none;
+  }
 
   .card-contents{
     display: flex;
