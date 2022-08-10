@@ -1,4 +1,17 @@
-<button (click)="goBack()"> go back</button>
-<h2>{{pokemon?.name}}</h2>
-<p>Height : {{pokemon?.height}}</p>
-<p>Weight : {{pokemon?.weight}}</p>
+<div class="detail-component">
+  <button class="back-btn" (click)="goBack()"> go back</button>
+
+  <div class="detail-contents">
+    <h2>{{pokemon?.name | uppercase}}</h2>
+    <img class="pokemon-sprite" src="{{ pokemon?.sprites?.front_default }}" alt="" />
+    <div class="types-container">
+      <span class="type" *ngFor="let type of pokemon?.types">
+        {{ type.type.name }}
+      </span>
+    </div>
+    <p>Height : {{pokemon?.height}}</p>
+    <p>Weight : {{pokemon?.weight}}</p>
+  </div>
+
+</div>
+
