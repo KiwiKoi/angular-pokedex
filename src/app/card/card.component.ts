@@ -21,8 +21,7 @@ pokemonDetail!: Pokemon;
 fetchPokemon(){
   this.pokeDataService.getPokemonDetail(this.pokemon.name).subscribe((response: Pokemon) => {
     this.pokemonDetail = response;
-    console.log(this.pokemonDetail.types[0].type.name)
-
+    console.log(this.pokemonDetail)
   })
 }
 

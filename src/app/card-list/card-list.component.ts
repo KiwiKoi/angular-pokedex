@@ -9,7 +9,7 @@ import { PokeDataService } from '../services/poke-data.service';
 })
 export class CardListComponent implements OnInit {
   pokemon!: Pokemon;
-  pokemonList!: Pokemon[];
+public  pokemonList!: Pokemon[];
 
   constructor(private pokeDataService: PokeDataService) {}
 
@@ -19,7 +19,7 @@ export class CardListComponent implements OnInit {
 
   fetchAllPokemon() {
     this.pokeDataService.getPokemonList().subscribe((response: Pokemon[]) => {
-      this.pokemonList = response;
+    this.pokemonList = response;
     });
   }
 }
