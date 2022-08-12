@@ -18,7 +18,7 @@ export class PokeDataService {
   getPokemonDetail(pokemon: number | string = 1): Observable<any>{
     return this.http.get(`${this.baseUrl}pokemon/${pokemon}`)
   }
-  getPokemonList(offset: number = 0, limit: number = 20): Observable<Pokemon[]>{
+  getPokemonList(offset: number = 0, limit: number = 151): Observable<Pokemon[]>{
     return this.http.get(`${this.baseUrl}pokemon?offset=${offset}&limit=${limit}`)
     .pipe(
       map((x: any) => x.results)

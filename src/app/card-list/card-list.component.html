@@ -1,8 +1,8 @@
 <div class="card-list-component">
   <h2 class="list-title">Pokémon List</h2>
   <div class="card-list">
-    <div class="card-container" *ngFor="let pokemon of pokemonList | keyvalue">
-      <app-card  [pokemon]="pokemon.value"></app-card>
+    <div class="card-container" *ngFor="let pokemon of pokemonList">
+      <app-card  [pokemon]="pokemon"></app-card>
      </div>
   </div>
   <div>
