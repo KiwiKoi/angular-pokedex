@@ -2,31 +2,27 @@
   display: flex;
   flex-direction: column;
   background-color: skyblue;
+  padding: 2rem;
 
-.search-bar {
-  margin: auto;
-  input{
-    border-radius: 0.5rem;
-    border: 1px solid grey;
-    width: 20rem;
-    height: 2rem;
-  }
-}
-
-  .list-title{
-    color: white;
-    text-align: center;
+  .search-bar {
+    margin: auto;
+    input {
+      border-radius: 0.5rem;
+      border: 1px solid grey;
+      width: 20rem;
+      height: 2rem;
+    }
   }
 
-.card-list{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  .card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem 0;
 
-  .card-container {
-    margin: 1rem;
+    .card-container {
+      margin: 1rem;
+    }
   }
-}
-
 }

@@ -2,8 +2,20 @@
   cursor: pointer;
   padding: 1rem;
   background-color: rgb(206, 81, 81);
-  .header-title {
-    color: #fff;
-    text-align: center;
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .header-title {
+      color: #fff;
+      text-align: center;
+    }
+    .pokeball-icon {
+      height: 2rem;
+      justify-content: center;
+      margin: auto 1rem;
+    }
   }
 }

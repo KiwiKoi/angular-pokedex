@@ -1,13 +1,16 @@
 <div class="card-list-component">
-  <h2 class="list-title">Pokémon List</h2>
   <div class="search-bar">
-    <input [(ngModel)]="searchTerm" (ngModelChange)="searchBar()" type="text" id="search" />
+    <input
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="searchBar()"
+      type="text"
+      id="search"
+    />
   </div>
   <div class="card-list">
     <div class="card-container" *ngFor="let pokemon of pokemonList">
-      <app-card  [pokemon]="pokemon"></app-card>
-     </div>
+      <app-card [pokemon]="pokemon"></app-card>
+    </div>
   </div>
-  <div>
-  </div>
+  <div></div>
 </div>
