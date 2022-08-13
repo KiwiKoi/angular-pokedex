@@ -2,7 +2,6 @@
   <h2 class="list-title">Pokémon List</h2>
   <div class="search-bar">
     <input [(ngModel)]="searchTerm" (ngModelChange)="searchBar()" type="text" id="search" />
-    <button type="button" class="search-btn" (click)="searchBar()">Search</button>
   </div>
   <div class="card-list">
     <div class="card-container" *ngFor="let pokemon of pokemonList">

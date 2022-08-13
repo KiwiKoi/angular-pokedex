@@ -5,6 +5,12 @@
 
 .search-bar {
   margin: auto;
+  input{
+    border-radius: 0.5rem;
+    border: 1px solid grey;
+    width: 20rem;
+    height: 2rem;
+  }
 }
 
   .list-title{
