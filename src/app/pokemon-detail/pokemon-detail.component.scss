@@ -1,22 +1,31 @@
-.detail-component{
+.detail-component {
   display: flex;
   flex-direction: column;
   padding: 2rem 5rem;
 
-.back-btn{
-  width: 5rem;
-  border-style: none;
-  background-color: lightblue;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  &:hover {
-    cursor: pointer;
-    box-shadow: 0rem 0rem 0.4rem 0.16rem #808080;
+  .back-btn {
+    width: 5rem;
+    border-style: none;
+    background-color: lightblue;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0rem 0rem 0.4rem 0.16rem #808080;
+    }
   }
-}
 
-  .detail-contents{
+  .types-container {
+    width: fit-content;
+    margin: 1rem auto;
+  }
+
+  .description {
+    margin: 1rem auto;
+    max-width: 25rem;
+  }
+
+  .detail-contents {
     text-align: center;
-
   }
 }

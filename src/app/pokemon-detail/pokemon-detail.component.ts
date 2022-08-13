@@ -11,6 +11,7 @@ import { Pokemon } from '../models/pokemon';
 })
 export class PokemonDetailComponent implements OnInit {
   public pokemon!: Pokemon;
+  public pokemonSpeciesInfo!: any;
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -19,16 +20,27 @@ export class PokemonDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPokemonDetail();
+    this.getPokemonSpeciesInfo();
   }
 
   getPokemonDetail(): any {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     return this.pokeDataService
       .getPokemonDetail(id)
-      .subscribe((response: any) => (this.pokemon = response));
+      .subscribe((response: any) => {
+        this.pokemon = response;
+      });
+  }
+  getPokemonSpeciesInfo(): any {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    return this.pokeDataService
+      .getPokemonSpeciesInfo(id)
+      .subscribe((response: any) => {
+        this.pokemonSpeciesInfo = response;
+      });
   }
 
-  goBack(): void{
+  goBack(): void {
     this.location.back();
   }
 }
