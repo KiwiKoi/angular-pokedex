@@ -15,9 +15,11 @@ export class PokeDataService {
   getPokemonDetail(pokemon: number | string): Observable<any> {
     return this.http.get(`${this.baseUrl}pokemon/${pokemon}`);
   }
+
   getPokemonSpeciesInfo(pokemon: number | string): Observable<any> {
     return this.http.get(`${this.baseUrl}pokemon-species/${pokemon}`);
   }
+
   getPokemonList(
     offset: number = 0,
     limit: number = 151

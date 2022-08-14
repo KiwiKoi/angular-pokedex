@@ -20,6 +20,17 @@
         {{ type.name }}
       </option>
     </select>
+    <select
+    name="generations"
+    class="dropdown"
+    (change)="setGeneration()"
+    formControlName="generation"
+  >
+    <option value="" selected>select a generation</option>
+    <option *ngFor="let generation of generations" [ngValue]="generation">
+      {{ generation.name }}
+    </option>
+  </select>
   </form>
   <div class="card-list">
     <div class="card-container" *ngFor="let pokemon of pokemonList">

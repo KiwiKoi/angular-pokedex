@@ -13,19 +13,31 @@ export class CardListComponent implements OnInit {
   pokemonList!: Pokemon[];
   pokemonDetail!: Pokemon[];
   typeList!: any[];
+  generations: any[] = [
+    { name: 'generation 1', offset: 0, limit: 151 },
+    { name: 'generation 2', offset: 151, limit: 100 },
+    { name: 'generation 3', offset: 251, limit: 135 },
+    { name: 'generation 4', offset: 386, limit: 107 },
+    { name: 'generation 5', offset: 493, limit: 156 },
+    { name: 'generation 6', offset: 649, limit: 72 },
+    { name: 'generation 7', offset: 721, limit: 88 },
+    { name: 'generation 8', offset: 809, limit: 96 }
+  ];
   @Input() searchTerm!: string;
 
   form = new FormGroup({
     type: new FormControl(),
+    generation: new FormControl(),
   });
 
   constructor(private pokeDataService: PokeDataService) {}
+
   ngOnInit(): void {
     this.fetchAllPokemon();
     this.fetchAllTypes();
   }
 
-  async filterPokemon() {
+  filterPokemon() {
     let filterResults: Pokemon[] = [];
     this.fetchAllPokemon();
 
@@ -45,7 +57,19 @@ export class CardListComponent implements OnInit {
     }
   }
 
-  fetchAllPokemon() {
+  setGeneration() {
+    let offset: number = this.form.value.generation.offset;
+    let limit: number = this.form.value.generation.limit;
+
+    this.pokeDataService
+      .getPokemonList(offset, limit)
+      .subscribe((response: Pokemon[]) => {
+        this.pokemonList = response;
+        console.log(response);
+      });
+  }
+
+  fetchAllPokemon(offset?: number, limit?: number) {
     this.pokeDataService.getPokemonList().subscribe((response: Pokemon[]) => {
       this.pokemonList = response;
     });
