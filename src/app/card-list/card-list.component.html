@@ -7,10 +7,23 @@
       id="search"
     />
   </div>
+
+  <form class="filters" [formGroup]="form">
+    <select
+      name="types"
+      class="dropdown"
+      (change)="filterPokemon()"
+      formControlName="type"
+    >
+      <option value="" selected>select a type</option>
+      <option *ngFor="let type of typeList" [ngValue]="type">
+        {{ type.name }}
+      </option>
+    </select>
+  </form>
   <div class="card-list">
     <div class="card-container" *ngFor="let pokemon of pokemonList">
       <app-card [pokemon]="pokemon"></app-card>
     </div>
   </div>
-  <div></div>
 </div>
