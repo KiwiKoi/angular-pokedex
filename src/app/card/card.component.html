@@ -1,10 +1,10 @@
-<div routerLink="/detail/{{pokemonDetail?.id}}" class="card-component">
+<div routerLink="/detail/{{pokemon?.id}}" class="card-component">
   <div class="card-contents">
-    <p>N°{{ pokemonDetail?.id }}</p>
-    <h3 class="pokemon-name">{{ pokemonDetail?.name | uppercase }}</h3>
-    <img class="pokemon-sprite" src="{{ pokemonDetail?.sprites?.front_default }}" alt="" />
+    <p>N°{{ pokemon?.id }}</p>
+    <h3 class="pokemon-name">{{ pokemon?.name | uppercase }}</h3>
+    <img class="pokemon-sprite" src="{{ pokemon?.sprites?.front_default }}" alt="" />
     <div class="types-container">
-      <span class="type" *ngFor="let type of pokemonDetail?.types">
+      <span class="type" *ngFor="let type of pokemon?.types">
         {{ type.type.name }}
       </span>
     </div>
