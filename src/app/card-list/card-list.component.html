@@ -32,10 +32,19 @@
     </option>
   </select>
   </form>
-  <div class="card-list">
-    <div class="card-container" *ngFor="let pokemon of pokemonList">
+  <div *ngIf="this.filteredPokemonList.length > 0; else defaultList" class="card-list">
+    <div class="card-container" *ngFor="let pokemon of filteredPokemonList">
       <app-card [pokemon]="pokemon"></app-card>
     </div>
   </div>
+  <ng-template #defaultList>
+    <div class="card-list">
+      <div class="card-container" *ngFor="let pokemon of pokemonList">
+        <app-card [pokemon]="pokemon"></app-card>
+      </div>
+    </div>
+  </ng-template>
+
+
 
 </div>

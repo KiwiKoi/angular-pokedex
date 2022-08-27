@@ -11,6 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class CardListComponent implements OnInit {
   pokemon!: Pokemon;
   pokemonList: Pokemon[] = [];
+  filteredPokemonList: Pokemon[] = [];
   searchResults: Pokemon[] = [];
   typeList!: any[];
   generations: any[] = [
@@ -82,8 +83,7 @@ export class CardListComponent implements OnInit {
   }
 
   filterPokemon() {
-    this.fetchAllPokemon();
-    this.pokemonList = this.pokemonList.filter((pokemon) => {
+    this.filteredPokemonList = this.pokemonList.filter((pokemon) => {
       return pokemon.types.some(
         (type) => type.type.name === this.form.value.type.name
       );
