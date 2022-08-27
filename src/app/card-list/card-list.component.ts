@@ -81,26 +81,7 @@ export class CardListComponent implements OnInit {
     }
   }
 
-  async filterPokemon() {
-    // let filterResults: Pokemon[] = [];
-    // // this.fetchAllPokemon();
-    // if (filterResults.length > 0) {
-    //   filterResults = [];
-    //   for (let i = 0; i < this.pokemonList.length; i++) {
-    //     this.pokeDataService
-    //       .getPokemonDetail(this.pokemonList[i].name)
-    //       .subscribe((response: Pokemon) => {
-    //         if (
-    //           response.types.some(
-    //             (type) => type.type.name === this.form.value.type.name
-    //           )
-    //         ) {
-    //           filterResults.push(response);
-    //           this.pokemonList = filterResults;
-    //         }
-    //       });
-    //   }
-    // }
+  filterPokemon() {
     this.fetchAllPokemon();
     this.pokemonList = this.pokemonList.filter((pokemon) => {
       return pokemon.types.some(
@@ -108,6 +89,4 @@ export class CardListComponent implements OnInit {
       );
     });
   }
-
-  filterLoop() {}
 }
