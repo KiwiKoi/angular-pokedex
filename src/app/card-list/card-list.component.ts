@@ -39,47 +39,6 @@ export class CardListComponent implements OnInit {
     this.fetchAllTypes();
   }
 
-  async filterPokemon() {
-    let filterResults: Pokemon[] = [];
-    // this.fetchAllPokemon();
-    console.log(filterResults);
-    if (filterResults.length > 0) {
-      filterResults = [];
-      for (let i = 0; i < this.pokemonList.length; i++) {
-        this.pokeDataService
-          .getPokemonDetail(this.pokemonList[i].name)
-          .subscribe((response: Pokemon) => {
-            if (
-              response.types.some(
-                (type) => type.type.name === this.form.value.type.name
-              )
-            ) {
-              filterResults.push(response);
-              this.pokemonList = filterResults;
-            }
-          });
-      }
-    } else {
-      for (let i = 0; i < this.pokemonList.length; i++) {
-        this.pokeDataService
-          .getPokemonDetail(this.pokemonList[i].name)
-          .subscribe((response: Pokemon) => {
-            if (
-              response.types.some(
-                (type) => type.type.name === this.form.value.type.name
-              )
-            ) {
-              filterResults.push(response);
-              this.pokemonList = filterResults;
-            } else {
-              this.showMessage = true;
-              this.pokemonList = [];
-            }
-          });
-      }
-    }
-  }
-
   setGeneration() {
     let offset: number = this.form.value.generation.offset;
     let limit: number = this.form.value.generation.limit;
@@ -113,13 +72,41 @@ export class CardListComponent implements OnInit {
   searchBar() {
     if (this.searchTerm.length > 0) {
       this.pokemonList = this.pokemonList.filter((pokemon) => {
-        return pokemon.name.includes(this.searchTerm)
-      })
+        return pokemon.name.includes(this.searchTerm);
+      });
     } else {
       this.searchResults = [];
       this.pokemonList = [];
       this.fetchAllPokemon();
     }
+  }
+
+  async filterPokemon() {
+    // let filterResults: Pokemon[] = [];
+    // // this.fetchAllPokemon();
+    // if (filterResults.length > 0) {
+    //   filterResults = [];
+    //   for (let i = 0; i < this.pokemonList.length; i++) {
+    //     this.pokeDataService
+    //       .getPokemonDetail(this.pokemonList[i].name)
+    //       .subscribe((response: Pokemon) => {
+    //         if (
+    //           response.types.some(
+    //             (type) => type.type.name === this.form.value.type.name
+    //           )
+    //         ) {
+    //           filterResults.push(response);
+    //           this.pokemonList = filterResults;
+    //         }
+    //       });
+    //   }
+    // }
+    this.fetchAllPokemon();
+    this.pokemonList = this.pokemonList.filter((pokemon) => {
+      return pokemon.types.some(
+        (type) => type.type.name === this.form.value.type.name
+      );
+    });
   }
 
   filterLoop() {}
