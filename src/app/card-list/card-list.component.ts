@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Pokemon } from '../models/pokemon';
 import { PokeDataService } from '../services/poke-data.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { forkJoin, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-card-list',
@@ -45,29 +46,38 @@ export class CardListComponent implements OnInit {
     this.pokemonList = [];
     this.pokeDataService
       .getPokemonList(offset, limit)
-      .subscribe((response: Pokemon[]) => {
-        response.forEach((pkmn) => {
-          this.pokeDataService
-            .getPokemonDetail(pkmn.name)
-            .subscribe((response: Pokemon) => {
-              this.pokemonList.push(response);
-            });
-        });
-
-        this.pokemonList.sort((a, b) => a.id - b.id);
+      .pipe(
+        this.setPokemonDetailList(),
+        map((pokemonList: Pokemon[]) => {
+          return pokemonList.sort((a, b) => a.id - b.id);
+        })
+      )
+      .subscribe((sortedPokemonList: Pokemon[]) => {
+        this.pokemonList = sortedPokemonList;
       });
   }
 
   fetchAllPokemon(offset?: number, limit?: number) {
-    this.pokeDataService.getPokemonList().subscribe((response: Pokemon[]) => {
-      response.forEach((pkmn) => {
-        this.pokeDataService
-          .getPokemonDetail(pkmn.name)
-          .subscribe((response: Pokemon) => {
-            this.pokemonList.push(response);
-          });
+    this.pokeDataService
+      .getPokemonList()
+      .pipe(
+        this.setPokemonDetailList(),
+        map((pokemonList: Pokemon[]) => {
+          return pokemonList.sort((a, b) => a.id - b.id);
+        })
+      )
+      .subscribe((sortedPokemonList: Pokemon[]) => {
+        this.pokemonList = sortedPokemonList;
+        console.log(this.pokemonList);
       });
-      this.pokemonList.sort((a, b) => a.id - b.id);
+  }
+
+  setPokemonDetailList() {
+    return switchMap((response: Pokemon[]) => {
+      const pokemonObservables = response.map((pkmn) =>
+        this.pokeDataService.getPokemonDetail(pkmn.name)
+      );
+      return forkJoin(pokemonObservables);
     });
   }
 
