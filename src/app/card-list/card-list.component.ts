@@ -9,7 +9,6 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent implements OnInit {
-  pokemon!: Pokemon;
   pokemonList: Pokemon[] = [];
   filteredPokemonList: Pokemon[] = [];
   searchResults: Pokemon[] = [];
@@ -43,12 +42,19 @@ export class CardListComponent implements OnInit {
   setGeneration() {
     let offset: number = this.form.value.generation.offset;
     let limit: number = this.form.value.generation.limit;
-
+    this.pokemonList = [];
     this.pokeDataService
       .getPokemonList(offset, limit)
       .subscribe((response: Pokemon[]) => {
-        this.pokemonList = response;
-        console.log(response);
+        response.forEach((pkmn) => {
+          this.pokeDataService
+            .getPokemonDetail(pkmn.name)
+            .subscribe((response: Pokemon) => {
+              this.pokemonList.push(response);
+            });
+        });
+
+        this.pokemonList.sort((a, b) => a.id - b.id);
       });
   }
 
@@ -61,6 +67,7 @@ export class CardListComponent implements OnInit {
             this.pokemonList.push(response);
           });
       });
+      this.pokemonList.sort((a, b) => a.id - b.id);
     });
   }
 

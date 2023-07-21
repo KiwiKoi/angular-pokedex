@@ -4,13 +4,8 @@ import { Pokemon } from '../models/pokemon';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
-@Input() pokemon!: Pokemon;
-
-  ngOnInit(): void {
-  }
-
-
+export class CardComponent {
+  @Input() pokemon!: Pokemon;
 }
